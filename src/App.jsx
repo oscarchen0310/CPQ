@@ -1,32 +1,71 @@
 import React, { useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
+import { Button, message, Steps, Checkbox, InputNumber, theme } from 'antd';
+
 const steps = [
   {
     title: 'First',
-    content: 'First-content',
+    content: (
+      <div>
+        <Checkbox>First Step Checkbox</Checkbox>
+        <InputNumber placeholder="Enter a number" style={{ marginTop: 16 }} />
+      </div>
+    ),
   },
   {
     title: 'Second',
-    content: 'Second-content',
+    content: (
+      <div>
+        <Checkbox>Second Step Checkbox</Checkbox>
+        <InputNumber placeholder="Enter a number" style={{ marginTop: 16 }} />
+      </div>
+    ),
   },
   {
-    title: 'Last',
-    content: 'Last-content',
+    title: 'Third',
+    content: (
+      <div>
+        <Checkbox>Third Step Checkbox</Checkbox>
+        <InputNumber placeholder="Enter a number" style={{ marginTop: 16 }} />
+      </div>
+    ),
+  },
+  {
+    title: 'Fourth',
+    content: (
+      <div>
+        <Checkbox>Fourth Step Checkbox</Checkbox>
+        <InputNumber placeholder="Enter a number" style={{ marginTop: 16 }} />
+      </div>
+    ),
+  },
+  {
+    title: 'Fifth',
+    content: (
+      <div>
+        <Checkbox>Fifth Step Checkbox</Checkbox>
+        <InputNumber placeholder="Enter a number" style={{ marginTop: 16 }} />
+      </div>
+    ),
   },
 ];
+
 const App = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
+
   const next = () => {
     setCurrent(current + 1);
   };
+
   const prev = () => {
     setCurrent(current - 1);
   };
+
   const items = steps.map((item) => ({
     key: item.title,
     title: item.title,
   }));
+
   const contentStyle = {
     lineHeight: '260px',
     textAlign: 'center',
@@ -35,7 +74,9 @@ const App = () => {
     borderRadius: token.borderRadiusLG,
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
+    padding: 16,
   };
+
   return (
     <>
       <Steps current={current} items={items} />
@@ -69,4 +110,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;
